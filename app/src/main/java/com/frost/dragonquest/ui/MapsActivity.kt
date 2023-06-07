@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.frost.dragonquest.R
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -13,6 +12,8 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.frost.dragonquest.databinding.ActivityMapsBinding
+import com.frost.dragonquest.extensions.clearPrefs
+import com.frost.dragonquest.extensions.signOut
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -23,6 +24,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         fun start(activity: Activity){
             activity.startActivity(Intent(activity, MapsActivity::class.java))
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        signOut()
+        clearPrefs()
+        finish()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

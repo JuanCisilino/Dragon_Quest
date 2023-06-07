@@ -60,6 +60,7 @@ dependencies {
 
     //Hilt
     implementation 'com.google.dagger:hilt-android:2.45'
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
     kapt 'com.google.dagger:hilt-compiler:2.45'
 
     //Shimmer
