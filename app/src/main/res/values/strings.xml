@@ -7,9 +7,14 @@
     <string name="error">Error</string>
     <string name="analytics_entrance">Ingreso</string>
 
+    <string name="zone_boedo">boedo</string>
+    <string name="zone_mardel">mardel</string>
+    <string name="zone_lanusia">lanusia</string>
+    <string name="zone_avella">avella</string>
 
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyChF2gr4-5VU-cgg-fI9ZbiKBK1d5L4uKg</string>
     <string name="prefs_file">com.frost.dragonquest.PREFERENCE_FILE_KEY</string>
     <string name="email">Email</string>
+    <string name="zone">Zona</string>
 
 </resources>

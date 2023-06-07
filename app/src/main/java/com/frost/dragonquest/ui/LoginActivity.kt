@@ -56,17 +56,18 @@ class LoginActivity : AppCompatActivity() {
             simpleVideoView.setOnErrorListener { _, _, _ ->
                 videoLayout.visibility = View.GONE
                 loginLayout.visibility = View.VISIBLE
-                showToast("error")
+                showToast(getString(R.string.error))
                 false
             }
         }
-
     }
 
     private fun setButtons() {
         with(binding){
             boedoButton.setOnClickListener {
+                saveZone(getString(R.string.zone_boedo))
                 googleButton.visibility = View.VISIBLE
+                boedoButton.visibility = View.GONE
             }
             googleButton.setOnClickListener { setWidget() }
         }

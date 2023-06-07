@@ -44,6 +44,17 @@ fun Activity.savePref(username: String){
     prefs.apply()
 }
 
+fun Activity.saveZone(zone: String){
+    val prefs = getPref().edit()
+    prefs.putString(R.string.zone.toString(), zone)
+    prefs.apply()
+}
+
+fun Activity.getZonePref(): String?{
+    val prefs = getPref()
+    return prefs.getString(R.string.zone.toString(), null)
+}
+
 fun Activity.getEmailPref(): String?{
     val prefs = getPref()
     return prefs.getString(R.string.email.toString(), null)
