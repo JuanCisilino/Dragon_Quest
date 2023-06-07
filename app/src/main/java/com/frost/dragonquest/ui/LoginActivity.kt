@@ -1,9 +1,11 @@
 package com.frost.dragonquest.ui
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.MediaController
 import androidx.activity.viewModels
 import com.frost.dragonquest.R
 import com.frost.dragonquest.databinding.ActivityLoginBinding
@@ -20,6 +22,8 @@ import com.google.firebase.auth.GoogleAuthProvider
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var mediaController: MediaController
+
     private val viewModel by viewModels<LoginViewModel>()
     private val loadingDialog = LoadingDialog()
 
@@ -30,17 +34,39 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
+        mediaController = MediaController(this)
         setContentView(binding.root)
+        setSplash()
         checkSession()
         setButtons()
         subscribeToLiveData()
     }
 
+    private fun setSplash() {
+        with(binding){
+            simpleVideoView.setMediaController(mediaController)
+            simpleVideoView.setVideoURI(Uri.parse("android.resource://"
+                        + packageName + "/" + R.raw.splash))
+            simpleVideoView.requestFocus()
+            simpleVideoView.start()
+            simpleVideoView.setOnCompletionListener {
+                videoLayout.visibility = View.GONE
+                loginLayout.visibility = View.VISIBLE
+            }
+            simpleVideoView.setOnErrorListener { _, _, _ ->
+                videoLayout.visibility = View.GONE
+                loginLayout.visibility = View.VISIBLE
+                showToast("error")
+                false
+            }
+        }
+
+    }
+
     private fun setButtons() {
         with(binding){
-            boedoRadioButton.isClickable
-            boedoRadioButton.setOnClickListener {
-                if (boedoRadioButton.isActivated) googleButton.visibility = View.VISIBLE
+            boedoButton.setOnClickListener {
+                googleButton.visibility = View.VISIBLE
             }
             googleButton.setOnClickListener { setWidget() }
         }
@@ -49,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
     private fun subscribeToLiveData() {
         viewModel.loadStateLiveData.observe(this) { handleResponse(it) }
         viewModel.userLiveData.observe(this) { handleUser(it) }
-        viewModel.errorLiveData.observe(this) { showToast(this, it) }
+        viewModel.errorLiveData.observe(this) { showToast(it) }
     }
 
     private fun handleUser(user: User?) {
@@ -63,7 +89,7 @@ class LoginActivity : AppCompatActivity() {
         when(loadState){
             LoadState.Loading -> loadingDialog.show(supportFragmentManager)
             LoadState.Success -> loadingDialog.dismiss()
-            else -> showToast(this, getString(R.string.error))
+            else -> showToast(getString(R.string.error))
         }
     }
 

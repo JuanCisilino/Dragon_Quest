@@ -20,8 +20,8 @@ fun Activity.showAlert(){
     dialog.show()
 }
 
-fun Activity.showToast(context: Context, message: String){
-    Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+fun Activity.showToast(message: String){
+    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 }
 
 fun Activity.logEventAnalytics(message: String, name:String){
