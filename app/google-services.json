@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "411777094047",
+    "project_id": "dragon-quest-dd81c",
+    "storage_bucket": "dragon-quest-dd81c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411777094047:android:50f800271a2c36c05d2daa",
+        "android_client_info": {
+          "package_name": "com.frost.dragonquest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411777094047-eqptj1ncjet4ct1l98pnclijhcfndkr7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.frost.dragonquest",
+            "certificate_hash": "5f0a74278385eb4f08dc6ca5000eb66edb91d89c"
+          }
+        },
+        {
+          "client_id": "411777094047-isuvr1m7cj6qmorv1kh196fv0o15h3rc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbxR3W9XKVU2URWj8VSl7h6h_rGCc33OM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411777094047-isuvr1m7cj6qmorv1kh196fv0o15h3rc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

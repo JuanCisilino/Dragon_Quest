@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Dragon Quest</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="error_message">Se ha producido un error autenticando al usuario</string>
+    <string name="error">Error</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyChF2gr4-5VU-cgg-fI9ZbiKBK1d5L4uKg</string>
 </resources>
