@@ -1,4 +1,4 @@
-package com.frost.dragonquest.ui
+package com.frost.dragonquest.ui.login
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

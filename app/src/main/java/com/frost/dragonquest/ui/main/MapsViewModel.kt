@@ -1,4 +1,4 @@
-package com.frost.dragonquest.ui
+package com.frost.dragonquest.ui.main
 
 import androidx.lifecycle.ViewModel
 import com.frost.dragonquest.model.Zone

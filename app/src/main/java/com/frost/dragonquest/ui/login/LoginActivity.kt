@@ -1,4 +1,4 @@
-package com.frost.dragonquest.ui
+package com.frost.dragonquest.ui.login
 
 import android.content.Intent
 import android.net.Uri
@@ -11,6 +11,7 @@ import com.frost.dragonquest.R
 import com.frost.dragonquest.databinding.ActivityLoginBinding
 import com.frost.dragonquest.extensions.*
 import com.frost.dragonquest.model.User
+import com.frost.dragonquest.ui.main.MapsActivity
 import com.frost.dragonquest.utils.LoadState
 import com.frost.dragonquest.utils.LoadingDialog
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -82,7 +83,8 @@ class LoginActivity : AppCompatActivity() {
     private fun handleUser(user: User?) {
         user?.let {
                 savePref(it.email)
-                MapsActivity.start(this) }
+            MapsActivity.start(this)
+        }
             ?:run { showAlert() }
     }
 
@@ -100,10 +102,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setWidget() {
-        val googleConfig = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
+        val googleConfig = buildGoogleConfig()
         val googleClient = GoogleSignIn.getClient(this, googleConfig)
         googleClient.signOut()
         startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
